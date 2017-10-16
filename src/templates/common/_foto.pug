@@ -1,0 +1,63 @@
+script(type="text/x-template" id="foto-template")
+  main.main.game.game_foto(v-show="isShown")
+    .container
+      .main__header
+        a.main__header-link(href="/" @click.prevent="goBack") На главную
+        h1.title.game__title добавь свою фотографию
+        
+      ul.fotos
+        li.foto.foto__item
+          label.foto__btn(for="file1")
+            input.foto__input(@change="addFoto" id="file1" name="file1" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file2")
+            input.foto__input(id="file2" name="file2" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file3")
+            input.foto__input(id="file3" name="file3" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file4")
+            input.foto__input(id="file4" name="file4" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file5")
+            input.foto__input(id="file5" name="file5" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file6")
+            input.foto__input(id="file6" name="file6" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file7")
+            input.foto__input(id="file7" name="file7" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file8")
+            input.foto__input(id="file8" name="file8" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file9")
+            input.foto__input(id="file9" name="file9" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+        li.foto.foto__item
+          label.foto__btn(@click="addFoto" for="file10")
+            input.foto__input(id="file10" name="file10" type="file")
+          .foto__text Нажми, чтобы загрузить  фото
+          .foto__self
+
+
+    .question
+      .container
+        .question__banner   

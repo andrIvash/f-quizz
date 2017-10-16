@@ -1,0 +1,19 @@
+script(type="text/x-template" id="game-template" lang="pug")
+  main.main.game(v-show="isShown")
+    .container
+      h1.title.game__title
+        | Викторина 
+        br 
+        | «Знаешь ли ты звёзд мирового футбола?»
+      ul.cards.game__cards
+        li.cards__item(v-for="card in quizz[active_quest].cards")
+          img.cards__img(:src='card')
+    .question
+      .container
+        h2.question__text(v-text='quizz[active_quest].question')
+        ul.answers.question__answers    
+          li.answer(v-for="(answer, index) in quizz[active_quest].answers" 
+            :data-id='index'
+            v-text='answer'
+            @click='checkAnswer')
+        .question__banner    

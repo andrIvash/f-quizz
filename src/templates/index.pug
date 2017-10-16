@@ -1,0 +1,34 @@
+extends _main-layout
+
+block main
+    #app-start(:class='{offline: gameShow || fotoShow || finalShow}')
+        .wrapper(:class='{offline: gameShow || fotoShow || finalShow}')
+    
+            include common/_main
+            include common/_game
+            include common/_foto
+            include common/_final
+
+            start-component(:is-shown="startShow", 
+                :utype="user_type", 
+                :gstatus="game_status"
+                @game="startGame"
+                @foto="getFoto")
+            game-component(:is-shown="gameShow",
+                @stop="endGame")
+            foto-component(:is-shown="fotoShow"
+                :gstatus="game_status"
+                :fstatus="foto_status"
+                :furl="foto_url"
+                @back="goBack"
+                @savefile="saveFoto")
+            final-component(:is-shown="finalShow",
+                :result="game_result",
+                @back="goBack")
+            footer.footer
+                .container
+                    .footer__text
+                        |Акция «ВИКТОРИНА PANINI FIFA365-2018» проходит 18.10.2017-30.12.2017 на территории РФ и является мероприятием, стимулирующим продажу наклеек «003367 PANINI FIFA 365 -2018». Организатор акции ООО «ИЗДАТЕЛЬСТВО ПАНИНИ РУС» (ИНН 7715882610 / КПП 771401001, ОГРН 1117746716670; Адрес регистрации/ почтовый адрес: 127015, г. Москва, Вятская ул. 49 стр. 1. Призовой фонд формируется за счет средств Организатора. Акция проводится в соответствии с требованиями законодательства РФ и настоящими условиями. Подробные условия акции опубликованы по ссылке выше «Полные правила».
+                    .footer__img      
+block script
+    script(src='assets/scripts/app.bundle.js' defer)

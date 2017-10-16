@@ -1,0 +1,240 @@
+.game {
+  display: flex;
+  min-height: 75vh;
+  flex-direction: column;
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+
+    @include wide() {
+      max-width: 100vmin; 
+    }
+
+    @include desktop() {
+      max-width: rem(850px); 
+    }
+    
+    @include tablet() {
+      max-width: rem(600px);
+    }
+  
+    @include phone() {
+      max-width: rem(300px);
+    }
+  }
+}
+
+.game_final,
+.game_foto {
+  .question {
+    .container {
+      max-width: rem(1000px);
+    }
+  }
+}
+
+.title.game__title,
+.game__final-title,
+.game__result-score {
+  color: #2c2c2c;
+  font-family: $font-title;
+  font-size: rem(28px);
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0 #fff,
+  2px 3px 0 rgba(0, 0, 0, 0.21),
+  -1px 1px 0 #fff,
+  1px 1px 0 #fff;
+  text-align: center;
+}
+
+.game__cards {
+  width: 100%;
+  margin: 0;
+  padding: rem(20px) 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards__item {
+  width: rem(150px);
+  height: rem(200px);
+  margin: rem(5px);
+}
+
+.cards__img {
+  height: 100%;
+  width: auto;
+}
+
+.answers {
+  width: 80%;
+  margin: 0 auto;
+  padding: rem(20px) 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: rem(40px);
+}
+
+.question {
+  @include url('questfon.jpg');
+}
+
+.game_foto {
+  .question {
+    background-image: none;
+  }
+}
+
+.question__text {
+  color: #fff;
+  font-family: $font-text;
+  font-size: rem(20px);
+  margin: rem(40px) 0;
+  text-align: center;
+}
+
+.answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(182px);
+  height: rem(43px);
+  box-shadow: 0 6px 0 rgba(27, 27, 27, 0.21), 0 2px 0 rgba(27, 27, 27, 0.86);
+  border-radius: 10px;
+  background-color: #11641f;
+  cursor: pointer;
+  margin: rem(10px) rem(10px);
+  color: #fff;
+  font-family: $font-text;
+  font-size: rem(17px);
+  &:hover {
+    background-color: #147524;
+  }
+}
+
+.answer.ok {
+  border: 3px solid #61ff00;
+}
+
+.answer.err {
+  border: 3px solid #c30a00;
+}
+
+.question__banner {
+  width: rem(600px);
+  height: rem(120px);
+  margin: 0 auto;
+
+  @include url('banner.jpg');
+}
+
+.game__result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: rem(50px);
+}
+
+.game__final-title {
+  font-size: rem(80px);
+  text-transform: uppercase;
+  margin: rem(30px) 0;
+}
+
+.game__result-text {
+  color: #2c2c2c;
+  font-family: $font-title;
+  font-size: rem(30px);
+  text-transform: uppercase;
+}
+
+.game__result-score {
+  font-size: rem(80px);
+  text-transform: uppercase;
+  margin: rem(10px) 0;
+}
+
+.stickers {
+  width: 100%;
+  margin: 0;
+  padding: rem(20px) 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.stickers__elem {
+  margin: rem(5px);
+  flex: 1 1 rem(200px);
+  display: flex;
+  align-items: center;
+}
+
+.stickers__img {
+  width: rem(60px);
+  height: rem(60px);
+}
+
+.stickers__text {
+  color: #ffffff;
+  font-family: $font-text;
+  font-size: rem(16px);
+  margin-left: rem(10px);
+}
+
+.main__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+
+  .title {
+    width: 85%;
+  }
+
+  .main__header-link {
+    width: 15%;
+    color: #ffffff;
+    font-family: $font-text;
+    font-size: rem(14px);
+    padding-left: 20px;
+    display: block;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      top: -3px;
+      left: 0;
+      position: absolute;
+
+      @include url('back.svg');
+    }
+
+  }
+
+  @include tablet {
+    flex-direction: column;
+    margin: rem(20px) 0;
+    justify-content: center;
+    align-items: center;
+
+    .main__header-link {
+      width: 100%;
+    }
+  }
+}

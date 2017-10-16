@@ -1,0 +1,49 @@
+.start__title {
+  text-align: center;
+}
+
+.start__title {
+  font-size: rem(30px);
+}
+
+.section_main {
+  @include url('blockfon0.jpg');
+
+  background-size: 120%;
+  background-position: bottom center;
+}
+
+.start__section_num {
+  @include url('blockfon1.jpg');
+
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.start__section_game-one {
+  .section__inner {
+    @include url('blockfon2.jpg');
+
+    background-size: 120%;
+    background-position: bottom center;
+  }
+}
+
+.start__section_game-two {
+  .section__inner {
+    @include url('blockfon3.jpg');
+
+    background-size: 120%;
+    background-position: bottom center;
+  }
+}
+
+
+.start__section_game-adv {
+  .section__inner {
+    @include url('blockfon4.jpg');
+
+    background-size: 120%;
+    background-position: bottom center;
+  }
+}

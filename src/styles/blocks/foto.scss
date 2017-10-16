@@ -1,0 +1,61 @@
+.fotos {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: rem(20px) 0;
+  
+  @include tablet() {
+    justify-content: center;
+  }
+}
+
+.foto__item {
+  width: rem(150px);
+  height: rem(220px);
+  margin: rem(10px);
+}
+
+.foto {
+  padding: rem(10px);
+  background-color: #afcfe2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  
+}
+
+.foto__btn {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  margin-bottom: rem(20px);
+
+  @include url('foto-btn.png');
+}
+
+.foto__text {
+  color: #000;
+  font-family: $font-text;
+  font-size: rem(14px);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.foto__input {
+  display: none;
+}
+
+.foto__self {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

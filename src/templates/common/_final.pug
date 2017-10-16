@@ -1,0 +1,56 @@
+script(type="text/x-template" id="final-template")
+  main.main.game.game_final(v-show="isShown")
+    .container
+        .main__header
+            a.main__header-link(href="/" @click.prevent="goBack") На главную
+            h1.title.game__title
+                | Викторина 
+                br 
+                | «Знаешь ли ты звёзд мирового футбола?»
+        h2.game__final-title ты молодец!
+        .game__result
+            .game__result-text твой результат
+            .game__result-score(v-text="result || 0")
+            .game__result-text баллов
+    .question
+      .container
+        ul.stickers
+          li.stickers__elem
+            img.stickers__img(src=`${data.cdn}img/stickers/s1.png`)
+            span.stickers__text Участие  в чемпионатах
+          li.stickers__elem
+                img.stickers__img(src=`${data.cdn}img/stickers/s2.png`)
+                span.stickers__text Гражданство
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s3.png`)
+              span.stickers__text Молодой игрок
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s4.png`)
+              span.stickers__text Защитник
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s5.png`)
+              span.stickers__text Голы на чемпионатах
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s6.png`)
+              span.stickers__text Международный  игрок
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s7.png`)
+              span.stickers__text Вратарь
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s8.png`)
+              span.stickers__text Нападающий   
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s9.png`)
+              span.stickers__text Эмблема команды
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s10.png`)
+              span.stickers__text Год рождения
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s11.png`)
+              span.stickers__text Полузащитник
+          li.stickers__elem
+              img.stickers__img(src=`${data.cdn}img/stickers/s12-1.png`)
+              img.stickers__img(src=`${data.cdn}img/stickers/s12-2.png`)
+              img.stickers__img(src=`${data.cdn}img/stickers/s12-3.png`)
+              span.stickers__text Нога           
+        .question__banner        

@@ -1,0 +1,41 @@
+// @font-face {
+// 	font-family: 'robotobold';
+// 	src: url('https://ad.csdnevnik.ru/special/staging/riff/assets/fonts/roboto-bold-webfont.woff2') format('woff2'),
+// 			 url('https://ad.csdnevnik.ru/special/staging/riff/assets/fonts/roboto-bold-webfont.woff') format('woff');
+// 	font-weight: normal;
+// 	font-style: normal;
+
+// }
+
+@font-face {
+	font-family: 'myriadregular';
+	src: url('../fonts/MyriadProRegular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'myriadbold';
+	src: url('../fonts/MyriadProBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'myriadsemibold';
+	src: url('../fonts/MyriadProSemiBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'dusha';
+	src: url('../fonts/DushaRegular.woff2') format('woff2'),
+	url('../fonts/DushaRegular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-0451;
+}
+
+

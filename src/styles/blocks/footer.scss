@@ -1,0 +1,25 @@
+.footer {
+  min-height: rem(150px);
+  background-color: #1c272d;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: rem(20px) 0;
+  }
+}
+
+.footer__text {
+  width: 70%;
+  color: #c6c6c6;
+  font-family: $font-text;
+  font-size: rem(11px);
+  line-height: 1.2;
+}
+
+.footer__img {
+  width: rem(136px);
+  height: rem(34px);
+
+  @include url('panini.png');
+}

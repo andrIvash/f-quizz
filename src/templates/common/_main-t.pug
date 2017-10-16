@@ -1,0 +1,94 @@
+script(type="text/x-template" id="teacher-template")
+  main.main.teacher(v-show="isShown")
+    .container
+      h1.title.teacher__title подарки для ваших учеников от panini
+      section.section.teacher__section
+        h2.section__subtitle Коллекционный альбом наклеек со «звёздами» футбола —  мечта любого мальчишки! 
+        p.section__text Все мальчики любят смотреть футбол, играть в зале с одноклассниками или во дворе с друзьями. Каждый мечтает стать звездой на поле, как Месси, Рональдо и Неймар. Футбольные кумиры редко приезжают в Россию, да и встретиться с ними довольно сложно. Но прикоснуться к ним, стать частью их мира даже проще, чем можно подумать. Так просто открыть пакетик с наклейками Panini FIFA365-2018 и найти их всех! Тогда мировая звезда улыбнется с наклейки и займет свое почетное место в альбоме, рядом со своими партнерами по игре и командами-соперниками.   
+        p.section__text Подающий надежды игрок школьной команды или обычный болельщик — каждый мальчик может стать экспертом в футбольном мире, собир ая наклейки, изучая футбольную статистику и с гордостью демонстрируй свою коллекцию одноклассникам!  
+        h2.section__subtitle Порадуйте ваших учеников! Сделайте им подарок, о котором они мечтают!
+      section.section.teacher__section.section_form
+        .section__form-inner
+          p.section__text Заполните заявку в срок по 18.10.2017 — 18.11.2017, чтобы получить коллекционные альбомы и наборы наклеек для вашей школы! 
+          h2.section__subtitle Первые 50 учителей получат бесплатно  50, 100 или 150 альбомов* «Panini FIFA365-2018» с наклейками!**
+          form.tform(id = "tform" @submit.prevent="validateBeforeSubmit")
+            fieldset.tform__fieldeset
+              label.tform__label(for = "username") ФИО
+              input.tform__input(name = "username" 
+                v-model="username"            
+                id = "username" 
+                v-validate="'required|alpha_spaces'"
+                :class="{'is-danger': errors.has('username') }")
+              span(v-show="errors.has('username')" class="help is-danger" v-text= "errors.first('username')")
+            fieldset.tform__fieldeset  
+              label.tform__label(for = "phone") Мобильный телефон
+              input.tform__input(name = "phone" 
+                id = "phone"
+                v-model="phone"            
+                v-validate="{ required: true, alpha_dash: true }"
+                :class="{'is-danger': errors.has('phone') }")
+              span(v-show="errors.has('phone')" class="help is-danger" v-text= "errors.first('phone')")
+            fieldset.tform__fieldeset  
+              label.tform__label(for = "index") Индекс
+              input.tform__input(name = "index" 
+                id = "index"
+                v-model="index"            
+                v-validate="{ required: true, numeric:true }"
+                :class="{'is-danger': errors.has('index') }")
+              span(v-show="errors.has('index')" class="help is-danger" v-text= "errors.first('index')")
+            fieldset.tform__fieldeset  
+              label.tform__label(for = "address") Почтовый адрес
+              input.tform__input(name = "address" 
+                id = "address"
+                v-model="address"            
+                v-validate="{required: true}"
+                :class="{'is-danger': errors.has('index') }")
+              span(v-show="errors.has('address')" class="help is-danger" v-text= "errors.first('address')")
+            fieldset.tform__fieldeset  
+              label.tform__label(for = "school_number") Номер школы
+              input.tform__input(name = "school_number" 
+                id = "school_numberl"
+                v-model="school_number"            
+                v-validate="'required|numeric'"
+                :class="{'is-danger': errors.has('school_number') }")
+              span(v-show="errors.has('school_number')" class="help is-danger" v-text= "errors.first('school_number')")
+            .tform__fieldeset.tform__fieldeset_albums  
+              label.tform__label Количество  альбомов
+              input.tform__input(name = "alb_one" 
+                id = "alb_one"
+                v-model="alb_one"            
+                v-validate="'required|numeric'"
+                :class="{'is-danger': errors.has('alb_one') }")
+              span(v-show="errors.has('alb_one')" class="help is-danger" v-text= "errors.first('alb_one')")
+
+              input.tform__input(name = "alb_two"
+                id = "alb_two"
+                v-model="alb_two"            
+                v-validate="'required|numeric'"
+                :class="{'is-danger': errors.has('alb_two') }")
+              span(v-show="errors.has('alb_two')" class="help is-danger" v-text= "errors.first('alb_two')")
+              input.tform__input(name = "alb_three" 
+                id = "alb_three"
+                v-model="alb_three"            
+                v-validate="'required|numeric'"
+                :class="{'is-danger': errors.has('alb_three') }")
+              span(v-show="errors.has('alb_three')" class="help is-danger" v-text= "errors.first('alb_three')")
+            .tform__fieldeset.tform__fieldeset_agree
+              input.tform__input(type = "checkbox" 
+                id = "personal_data" 
+                name = "personal_data" 
+                value = "false"
+                v-model="personal_data"   
+                v-validate="'required'")
+              label.tform__label(for = "personal_data") Соглашаюсь на обработку моих персональных данных 
+              span(class="help is-danger" v-show="errors.has('personal_data')" v-text= "errors.first('personal_data')")
+            fieldset.tform__fieldeset 
+              button.tform__button.btn-main(type="submit") ОТПРАВИТЬ  
+          p.section__info *Бесплатные альбомы отправляются курьером, оплачивать доставку не нужно. Все расходы берет на себя представительство Panini Россия. После оформления бесплатного заказа с Вами свяжутся, у
+          p.section__info **С подробной информацией о правилах и сроках проведения акции, о сроках окончания приема заявок на участие, количестве призов, сроках, месте и порядке их получения можно ознакомиться в Правилах акции «Получи альбом для школы!»  
+      section.section.teacher__section.section_about
+        h2.section__subtitle Наклейки Panini – это азарт поиска и радость обладания!
+        p.section__text Золотой мир футбола в альбоме Panini FIFA365-2018. Коллекция наклеек посвящена 25 лучшим футбольным клубам. Каждый клуб представлен наклейками с логотипом, командным фото и ключевыми игроками в официальной форме. Про каждого футболиста в коллекции собрана важная статистика: участие в чемпионатах, забитые голы, игровая позиция и ведущая нога, гражданство, год рождения и статус игрока. Всего в коллекции для вклеивания в альбом 602 наклейки.
+        h2.section__info Хочешь знать больше о мировом клубном футболе? Собирай наклейки Panini FIFA 365-2018, обменивайся с друзьями и создай свою коллекцию звезд футбола!
+      section.section.teacher__section.section_buy
+        a.section__link-buy(href="/") Где купить? 

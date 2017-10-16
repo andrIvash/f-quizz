@@ -1,0 +1,109 @@
+
+.tform__fieldeset {
+  border: none;
+  margin-bottom: rem(15px);
+  position: relative;
+}
+
+.tform__label {
+  display: block;
+  color: #707070;
+  font-family: $font-text;
+  font-size: rem(20px);
+  margin-bottom: rem(5px);
+}
+
+.tform__input {
+  width: 100%;
+  min-height: rem(43px);
+  border-radius: 2px;
+  border: 1px solid #c6c6c6;
+  background-color: #f5f5f5;
+  padding: 0 rem(10px);
+  font-family: $font-text;
+  font-size: rem(16px);
+  color: $color-text-light;
+}
+
+.tform__fieldeset.tform__fieldeset_albums {
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: rem(50px);
+  margin-bottom: rem(35px);
+
+  .tform__label {
+    display: inline-block;
+    width: 24%;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .tform__input {
+    display: inline-block;
+    padding: 0 rem(5px);
+    width: 15%;
+    margin-left: rem(10px);
+    box-shadow: 0 2px 13px 1px rgba(0, 0, 0, 0.41);
+    border-radius: 4px;
+    background-color: #ffffff;
+
+    font-family: $font-title;
+    color: $color-subtitle;
+    font-size: rem(21px);
+    text-shadow: -1px -1px 0 #fff,
+    2px 3px 0 rgba(0, 0, 0, 0.21),
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+
+    &active,
+    &:focus {
+      background-color: #b1ce87;
+    }
+  }
+}
+
+.tform__fieldeset.tform__fieldeset_agree {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: rem(50px);
+  padding-left: rem(10px);
+
+  .tform__input {
+    display: none;
+  }
+
+  .tform__label {
+    width: 100%;
+    padding-left: rem(50px);
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: rem(-6px);
+      left: 0;
+      width: rem(33px);
+      height: rem(33px);
+      border-radius: 2px;
+      border: 1px solid #c6c6c6;
+      background-color: #f5f5f5;
+    }
+  }
+
+  input[type=checkbox]:checked + .tform__label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: rem(-25px);
+    left: rem(3px);
+    width: rem(50px);
+    height: rem(50px);
+    
+    @include url('vector.png');
+  }
+}
