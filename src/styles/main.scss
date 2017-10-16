@@ -54,7 +54,7 @@ body {
   position: relative;
   overflow: hidden;
   padding-top: 25vmin;
-  background-image: url('http://localhost:3000/assets/img/bg2.jpg');
+  background-image: url('../img/bg2.jpg');
   background-position: top center;
   //background-size: cover;
   background-repeat: no-repeat;
@@ -112,7 +112,7 @@ body {
 }
 
 #app-start.offline .wrapper {
-  background-image: url('http://localhost:3000/assets/img/bg3.jpg');
+  background-image: url('../img/bg3.jpg');
   background-size: cover;
   
   @include phone() {
