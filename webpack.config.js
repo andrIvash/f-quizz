@@ -35,7 +35,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       //CDN: JSON.stringify('https://ad.csdnevnik.ru/special/staging/riff/assets/')
-      CDN: JSON.stringify('http://localhost:3000/assets/')
+      CDN: JSON.stringify('assets/')
     })
     // new StyleLintPlugin({
     //   configFile: './.stylelintrc',
