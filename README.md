@@ -3,8 +3,8 @@
 
 [Demo][demo] | [Source][source]
 
-[demo]: https://andrivash.github.io/
-[source]: https://github.com/andrIvash/ 
+[demo]: https://andrivash.github.io/f-quizz/
+[source]: https://github.com/andrIvash/f-quizz
 
 
 ## Getting started for dev
