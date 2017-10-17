@@ -9,22 +9,13 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+    max-width: 1200px;
 
-    @include wide() {
-      max-width: 100vmin; 
-    }
-
-    @include desktop() {
-      max-width: rem(850px); 
-    }
     
     @include tablet() {
-      max-width: rem(600px);
+      max-width: rem(800px);
     }
   
-    @include phone() {
-      max-width: rem(300px);
-    }
   }
 }
 
@@ -42,7 +33,7 @@
 .game__result-score {
   color: #2c2c2c;
   font-family: $font-title;
-  font-size: rem(28px);
+  font-size: rem(35px);
   text-transform: uppercase;
   text-shadow: -1px -1px 0 #fff,
   2px 3px 0 rgba(0, 0, 0, 0.21),
@@ -54,7 +45,7 @@
 .game__cards {
   width: 100%;
   margin: 0;
-  padding: rem(20px) 0;
+  padding: rem(40px) 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -63,9 +54,9 @@
 }
 
 .cards__item {
-  width: rem(150px);
-  height: rem(200px);
-  margin: rem(5px);
+  width: rem(215px);
+  height: rem(290px);
+  margin: rem(7px);
 }
 
 .cards__img {
@@ -74,9 +65,8 @@
 }
 
 .answers {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  padding: rem(20px) 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +88,7 @@
 .question__text {
   color: #fff;
   font-family: $font-text;
-  font-size: rem(20px);
+  font-size: rem(30px);
   margin: rem(40px) 0;
   text-align: center;
 }
@@ -107,8 +97,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: rem(182px);
-  height: rem(43px);
+  width: rem(380px);
+  height: rem(61px);
   box-shadow: 0 6px 0 rgba(27, 27, 27, 0.21), 0 2px 0 rgba(27, 27, 27, 0.86);
   border-radius: 10px;
   background-color: #11641f;
@@ -116,7 +106,7 @@
   margin: rem(10px) rem(10px);
   color: #fff;
   font-family: $font-text;
-  font-size: rem(17px);
+  font-size: rem(30px);
   &:hover {
     background-color: #147524;
   }
@@ -131,8 +121,8 @@
 }
 
 .question__banner {
-  width: rem(600px);
-  height: rem(120px);
+  width: rem(800px);
+  height: rem(162px);
   margin: 0 auto;
 
   @include url('banner.jpg');

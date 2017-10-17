@@ -98,11 +98,8 @@ body {
 
 #app-start.offline .wrapper {
   background-image: url('../img/bg3.jpg');
-  background-size: cover;
+  //background-size: cover;
   
-  @include phone() {
-    background-image: none;
-  }
 }
 
 #app-teacher {
