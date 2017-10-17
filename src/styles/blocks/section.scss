@@ -21,6 +21,7 @@
   font-family: $font-text;
   font-size: rem(20px);
   text-align: center;
+  line-height: 1.2;
 }
 
 .section_about {
@@ -37,8 +38,9 @@
 .section__info {
   color: $color-text;
   font-family: $font-text-bold;
-  font-size: rem(17px);
+  font-size: rem(20px);
   text-align: center;
+  line-height: 1.2;
 }
 
 .section.section_buy {
@@ -51,7 +53,7 @@
   text-align: center;
   color: $color-text;
   font-family: $font-text-bold;
-  font-size: rem(24px);
+  font-size: rem(20px);
   text-transform: uppercase;
   text-decoration: none;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.21);
@@ -124,7 +126,7 @@
 }
 
 .section__inner {
-  padding: rem(20px) rem(35px);
+  padding: rem(30px) rem(45px);
   border-radius: 5px;
   background-color: #fff;
 }
@@ -132,22 +134,22 @@
 .section__subtitle_b {
   color: $color-text;
   font-family: $font-text-bold;
-  font-size: rem(18px);
+  font-size: rem(20px);
   text-transform: uppercase;
 }
 
 .section__content,
 .section__elem {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
 }
 
 .section__elem {
-  width: 50%;
+  width: 40%;
 
   &:last-child {
-    margin-left: rem(40px);
+    margin-left: rem(20px);
   }
 }
 .section__desc {

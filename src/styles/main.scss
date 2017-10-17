@@ -44,38 +44,37 @@ html {
 body {
   position: relative;
   background: $color-fon;
+  min-width: 600px;
 }
 
 .wrapper {
   min-height: 100vh;
   width: 100%;
   margin: 0 auto;
-  min-width: 300px;
   position: relative;
   overflow: hidden;
-  padding-top: 25vmin;
-  background-image: url('../img/bg2.jpg');
+  background-image: url('../img/bgmain.jpg');
   background-position: top center;
   //background-size: cover;
   background-repeat: no-repeat;
+  padding-top: rem(250px);
 
   @include desktop() {
-    padding-top: rem(300px);
+    padding-top: rem(200px);
   }
-  @include laptop() {
-    padding-top: rem(250px);
-  }
+
   @include tablet() {
-    padding-top: rem(250px);
+    padding-top: rem(270px);
   }
-  @include phone() {
-    padding-top: rem(300px);
-    background-image: none;
-  }
+  // @include phone() {
+  //   padding-top: rem(300px);
+  //   background-image: none;
+  // }
 }
 
 .container {
-  max-width: 65vmin;
+  max-width: rem(800px);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -83,20 +82,6 @@ body {
   position: relative;
   height: 100%;
 
-  @include desktop() {
-    max-width: rem(650px); 
-  }
-  @include laptop() {
-    max-width: rem(550px);
-  }
-  
-  @include tablet() {
-    max-width: rem(600px);
-  }
-
-  @include phone() {
-    max-width: rem(300px);
-  }
 }
 
 #app-start {
@@ -135,6 +120,9 @@ body {
 }
 
 .header {
+  background-color: #1c272d;
+  border-bottom: 4px solid #fff;
+
   .container {
     justify-content: flex-start;
     padding: rem(10px) 0;
