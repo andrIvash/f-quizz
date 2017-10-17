@@ -22,15 +22,15 @@ export const Auth = {
       } else {
         var url;
         const appOptions = getSettings();
-        if (appOptions.isMobile) {
+        //if (appOptions.isMobile) {
           url = appOptions.authUrl + '?response_type=token&client_id=' + appOptions.clientId;
           url += '&scope=' + appOptions.scope + '&redirect_uri=' + appOptions.redirectUrl;
           window.location.href = url;
-        } else {
-          url = appOptions.authUrl + '?response_type=token&client_id=' + appOptions.clientId + '&scope=';
-          url += appOptions.scope + '&redirect_uri=' + appOptions.redirectUrl;
-          window.open(url, 'Авторизация', 'width=600,height=500,location=no');
-        }
+        //} else {
+        //  url = appOptions.authUrl + '?response_type=token&client_id=' + appOptions.clientId + '&scope=';
+        //  url += appOptions.scope + '&redirect_uri=' + appOptions.redirectUrl;
+        //  window.open(url, 'Авторизация', 'width=600,height=500,location=no');
+        //}
 
       }
     }

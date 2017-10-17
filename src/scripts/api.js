@@ -11,23 +11,26 @@ var API = {
     
     appOptions = getSettings();
 
-    if (!appOptions.isMobile && document.location.href.indexOf('access_token') > -1) {
-      this.drawAuthPage();
-      Auth.auth(function() {
-        var path = window.location.href.substring(0, window.location.href.indexOf('?'));
+    // if (!appOptions.isMobile && document.location.href.indexOf('access_token') > -1) {
+    //   this.drawAuthPage();
+    //   Auth.auth(function() {
+    //     var path = window.location.href.substring(0, window.location.href.indexOf('?'));
   
-        history.pushState('', document.title, path);
-        window.opener.location.reload();
-        console.log('is not mob')
-        window.close();
-      });
+    //     history.pushState('', document.title, path);
+    //     window.opener.location.reload();
+    //     console.log('is not mob')
+    //     window.close();
+    //   });
   
-    } else if (document.location.href.indexOf('access_token') > -1) {
+    // } else 
+    
+    if (document.location.href.indexOf('access_token') > -1) {
       Auth.auth(function () {
         var path = window.location.href.substring(0, window.location.href.indexOf('?'));
   
         history.pushState('', document.title, path);
-        window.opener.location.reload();
+        //window.opener.location.reload();
+        window.location.reload(true); // ??????????
         console.log('is mob')
       });
     }
