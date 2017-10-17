@@ -13,6 +13,34 @@ import GameComponent from './components/game';
 import FotoComponent from './components/foto';
 import FinalComponent from './components/final';
 
+const dictionary = {
+  ru: {
+    messages: {
+      confirmed: function () { 
+        return "Your password is not confirmed"
+      },
+      email: function () { 
+        return "I really dont like your email"
+      },
+      required: function () { 
+        return "Это обязательное поле"
+      },
+      numeric: function () { 
+        return "Введите цифровое значение"
+      },
+
+      alpha_dash: function () { 
+        return "Введите  текстовое значение"
+      },
+
+      alpha_spaces: function () { 
+        return "Введите  текстовое значение"
+      }
+
+    }
+  }
+};
+
 Validator.addLocale(ru);
 
 
@@ -20,6 +48,7 @@ const configValidate = {
   locale: 'ru'
 };
 
+VeeValidate.Validator.updateDictionary(dictionary);
 Vue.use(VeeValidate, configValidate);
 Vue.config.debug = true;
 

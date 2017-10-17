@@ -9,9 +9,9 @@ export default {
     index: null,
     phone: '',
     school_number: null,
-    alb_one: null,
-    alb_two: null,
-    alb_three: null,
+    alb_one: 50,
+    alb_two: 100,
+    alb_three: 150,
     personal_data: false
   }),
 

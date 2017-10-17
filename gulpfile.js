@@ -83,7 +83,7 @@ gulp.task('copy.image', function() {
 });
 // ------------------------------------------ copy readme --------------------------------//
 gulp.task('copy.readme', function() {
-  return gulp.src('./README.md', {since: gulp.lastRun('copy.readme')})
+  return gulp.src(['./README.md', './action-rules.pdf'], {since: gulp.lastRun('copy.readme')})
     .pipe(gulp.dest('./build'));
 });
 // ------------------------------------------ copy fonts --------------------------------//

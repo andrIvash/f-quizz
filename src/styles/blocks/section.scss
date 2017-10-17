@@ -93,12 +93,12 @@
 
     background-size: 120%;
     background-position: bottom center;
-    padding: rem(10px);
+    padding: rem(30px) rem(45px);
   }
 
   .section__subtitle {
     font-family: $font-title;
-    font-size: rem(21px);
+    font-size: rem(25px);
     text-shadow: -1px -1px 0 #fff,
     2px 3px 0 rgba(0, 0, 0, 0.21),
     -1px 1px 0 #fff,
@@ -106,7 +106,7 @@
   }
 
   .section__text {
-    font-size: rem(18px);
+    font-size: rem(20px);
   }
 
   .section__info {
@@ -166,3 +166,6 @@
   text-transform: uppercase;
 }
 
+.section__info-link {
+  color: #6b6969;
+}
