@@ -1,3 +1,5 @@
+include ./_mixins
+
 script(type="text/x-template" id="final-template")
   main.main.game.game_final(v-show="isShown")
     .container
@@ -11,7 +13,8 @@ script(type="text/x-template" id="final-template")
         .game__result
             .game__result-text твой результат
             .game__result-score(v-text="result || 0")
-            .game__result-text баллов
+            .game__result-score
+            .game__result-text(v-text="decl")
     .question
       .container
         ul.stickers

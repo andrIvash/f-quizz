@@ -188,10 +188,11 @@ export default {
             $(item).removeClass('err');
           });
           resolve();
-        }, 3000);
+        }, 1000);
       });
       pr.then(() => {
         if (that.active_quest >= that.quizz.length - 1) {
+          that.active_quest = 0;
           that.$emit('stop', that.result);
         } else {
           that.active_quest++;

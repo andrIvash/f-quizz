@@ -42,10 +42,13 @@
   text-align: center;
 }
 
+.title.game__title {
+  margin: rem(10px) 0 0 0;
+}
 .game__cards {
   width: 100%;
   margin: 0;
-  padding: rem(40px) 0;
+  padding: rem(10px) 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -173,8 +176,8 @@
 }
 
 .stickers__img {
-  width: rem(60px);
-  height: rem(60px);
+  width: auto;
+  height: auto;
 }
 
 .stickers__text {
@@ -186,9 +189,9 @@
 
 .main__header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-
+  margin: rem(20px) 0;
 
   .title {
     width: 85%;
@@ -201,7 +204,8 @@
     font-size: rem(14px);
     padding-left: 20px;
     display: block;
-    position: relative;
+    position: absolute;
+    left: 0;
 
     &::after {
       content: '';
@@ -215,6 +219,9 @@
       @include url('back.svg');
     }
 
+    @include tablet { 
+      top: 0;
+    }
   }
 
   @include tablet {
