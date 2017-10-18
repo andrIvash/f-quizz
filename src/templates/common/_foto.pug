@@ -12,7 +12,7 @@ script(type="text/x-template" id="foto-template")
           .foto__self(v-show="item.foto_status" :style="{ 'background-image': 'url(' + item.foto_status + ')' }")
             .foto__self-img
             .foto__self-text
-        li.foto.foto__item
+        li.foto.foto__item.foto__item_last
           label.foto__btn(for="last")
             input.foto__input(@change="addFoto" id="last" name="last" type="file")
           .foto__text Нажми, чтобы загрузить  фото

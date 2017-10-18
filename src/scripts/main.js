@@ -37,7 +37,6 @@ const _vms = new Vue({
     game_result: null, //result of the game
     foto_status: false, //foto load status
     user: null,
-    info: null,
     foto_url: null,
     user_list: []
   },
@@ -83,14 +82,7 @@ const _vms = new Vue({
         API.getKeyFromDB({key: 'football_activity-0001'}, function(res) {
         //console.log(res);
           if (res == null) { // new user !!!!!!!!
-            // that.info = {
-            //   id: that.user.personId,
-            //   game_result: that.game_result,
-            //   game_status: that.game_status,
-            //   foto_status: that.foto_status
-            // };
-            // that.updateData(that.info);
-            //that.user_list = [];
+            that.user_list = [];
           }
           else {
             that.user_list = JSON.parse(res.Value);
@@ -135,7 +127,7 @@ const _vms = new Vue({
     updateData() { // update user data
 
       const userId = this.findUser();
-      if (userId) {
+      if (userId !== false) {
         this.game_result = this.user_list[userId].game_result;
         this.game_status = this.user_list[userId].game_status;
         this.foto_status = this.user_list[userId].foto_status;
@@ -145,7 +137,7 @@ const _vms = new Vue({
     saveAllData() { // renew user info
       const that = this;
       const userId = this.findUser();
-      if (userId) {
+      if (userId !== false) {
         this.user_list[userId].game_result = this.game_result;
         this.user_list[userId].game_status = this.game_status;
         this.user_list[userId].foto_status = this.foto_status;
@@ -163,6 +155,7 @@ const _vms = new Vue({
         // key: `football_activity-${that.user.personId}`,
         key: 'football_activity-0001',
         value: JSON.stringify(that.user_list),
+        //value: JSON.stringify([]),
         permissionLevel: 'Public'
       }, function(res) {
       });

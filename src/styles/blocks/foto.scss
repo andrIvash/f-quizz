@@ -59,3 +59,9 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.foto__item_last {
+  .foto__self { 
+    display: none;
+  }
+}
