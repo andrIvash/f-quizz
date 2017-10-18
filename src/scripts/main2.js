@@ -106,6 +106,7 @@ const _vmt = new Vue({
       });
     },
     sendData(data) {
+      const that = this;
       console.log('send data');
       $.ajax({
         url: 'https://formspree.io/ebelopukhova@paninirus.com',
@@ -122,7 +123,7 @@ const _vmt = new Vue({
         dataType: 'json'
       }).done(function() {
         $('#modal2 .modal__content').text('Спасибо, ваша заявка принята.');
-        this.showModal();
+        that.showModal();
       });
     },
     clearView() {
