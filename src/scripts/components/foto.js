@@ -45,6 +45,8 @@ export default {
           });
         } else {
           console.log('file alredy saved');
+          $('#modal2 .modal__content').text('Возможно сохранение только одной фотографии !');
+          this.showModal();
         }
       }
     },
@@ -62,7 +64,14 @@ export default {
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
       });
+    },
+    showModal: function() {
+      const modal = $('#modal2').modal({
+        fadeDuration: 250,
+        fadeDelay: 1.5
+      });
     }
+
   },
   watch: {
     fstatus: function(newVal) {
