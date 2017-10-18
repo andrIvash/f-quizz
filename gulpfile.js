@@ -131,8 +131,8 @@ gulp.task('js.vendor', function() {
     './node_modules/jquery/dist/jquery.min.js',
     './node_modules/jquery-modal/jquery.modal.js',
     './node_modules/moment/moment.js',
-    './src/scripts/vue.min.js'
-    //'./src/scripts/vue.js'
+    //'./src/scripts/vue.min.js'
+    './src/scripts/vue.js'
   ])
     .pipe(concatCss('vendor.js'))
     .pipe(uglify())

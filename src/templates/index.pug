@@ -18,8 +18,8 @@ block main
                 @stop="endGame")
             foto-component(:is-shown="fotoShow"
                 :gstatus="game_status"
+                :ulist="user_list"
                 :fstatus="foto_status"
-                :furl="foto_url"
                 @back="goBack"
                 @savefile="saveFoto")
             final-component(:is-shown="finalShow",

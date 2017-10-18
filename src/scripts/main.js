@@ -38,7 +38,8 @@ const _vms = new Vue({
     foto_status: false, //foto load status
     user: null,
     info: null,
-    foto_url: null
+    foto_url: null,
+    user_list: []
   },
 
   components: {
@@ -78,8 +79,9 @@ const _vms = new Vue({
         that.user = res;
         //console.log(that.user); //EduStudent
       }).then(function() {
-        API.getKeyFromDB({key: `football_activity-${that.user.personId}`}, function(res) {
-          //console.log(res);
+        //API.getKeyFromDB({key: `football_activity-${that.user.personId}`}, function(res) {
+        API.getKeyFromDB({key: 'football_activity-0001'}, function(res) {
+        //console.log(res);
           if (res == null) { // new user !!!!!!!!
             // that.info = {
             //   id: that.user.personId,
@@ -88,10 +90,11 @@ const _vms = new Vue({
             //   foto_status: that.foto_status
             // };
             // that.updateData(that.info);
+            //that.user_list = [];
           }
           else {
-            const info = JSON.parse(res.Value);
-            that.updateData(info);
+            that.user_list = JSON.parse(res.Value);
+            that.updateData();
           }
         });
       });
@@ -129,22 +132,37 @@ const _vms = new Vue({
       this.finalShow = false;
     },
 
-    updateData(info) { // update user data
-      this.game_result = info.game_result;
-      this.game_status = info.game_status;
-      this.foto_status = info.foto_status;
+    updateData() { // update user data
+
+      const userId = this.findUser();
+      if (userId) {
+        this.game_result = this.user_list[userId].game_result;
+        this.game_status = this.user_list[userId].game_status;
+        this.foto_status = this.user_list[userId].foto_status;
+      }
     },
+
     saveAllData() { // renew user info
       const that = this;
+      const userId = this.findUser();
+      if (userId) {
+        this.user_list[userId].game_result = this.game_result;
+        this.user_list[userId].game_status = this.game_status;
+        this.user_list[userId].foto_status = this.foto_status;
+      } else {
+        this.user_list.push({
+          id: that.user.personId,
+          game_result: this.game_result,
+          game_status: this.game_status,
+          foto_status: this.foto_status
+        });
+      }
+
       API.addKeyToDB({
         label: 'football',
-        key: `football_activity-${that.user.personId}`,
-        value: JSON.stringify({
-          id: that.user.personId,
-          game_result: that.game_result,
-          game_status: that.game_status,
-          foto_status: that.foto_status
-        }),
+        // key: `football_activity-${that.user.personId}`,
+        key: 'football_activity-0001',
+        value: JSON.stringify(that.user_list),
         permissionLevel: 'Public'
       }, function(res) {
       });
@@ -153,14 +171,24 @@ const _vms = new Vue({
     saveFoto(data) {  // save foto to base and renew user info
       const that = this;
       API.uploadImage(data, (res) => {
-        that.foto_status = res[0];
-        console.log('save file');
-        API.checkUploadImage([that.foto_status], (res) => {
-          that.foto_url = res[0].downloadUrl;
+        console.log('save file', res);
+        API.checkUploadImage([res], (res) => {
+          that.foto_status = res[0].downloadUrl;
           that.saveAllData();
         });
       });
+    },
+
+    findUser() { //find active user in user_list
+      let result = false;
+      this.user_list.forEach((item, i) => {
+        if (item.id === this.user.personId) {
+          result = i;
+        }
+      });
+      return result;
     }
+
   }
 });
 

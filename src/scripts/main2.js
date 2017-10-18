@@ -120,6 +120,9 @@ const _vmt = new Vue({
           personal_data: data.personal_data
         },
         dataType: 'json'
+      }).done(function() {
+        $('#modal2 .modal__content').text('Спасибо, ваша заявка принята.');
+        this.showModal();
       });
     },
     clearView() {

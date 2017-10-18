@@ -4,8 +4,8 @@ script(type="text/x-template" id="start-template")
       h1.title.start__title panini: собери свою коллекцию  звезд футбола!
       section.section.start__section.section_main(
         v-show="utype")
-        p.section__text Любишь футбол? Знаешь всех крутых футболистов? Проверь свои знания! Участвуй в викторине, ответь на вопросы о любимых игроках и стань обладателем 250 наклеек, коллекционного альбома или футболки со своим именем!
-        button.btn-main(@click.prevent="{console.log('start');startGame()}") УЧАСТВОВАТЬ
+        p.section__text Любишь футбол? Знаешь всех крутых футболистов? Проверь свои знания! Участвуй в викторине, ответь на вопросы о любимых игроках и стань обладателем 250 наклеек, коллекционного альбома или футболки  со своим именем!
+        button.btn-main(@click.prevent="startGame") УЧАСТВОВАТЬ
         a(href="quizz-rules.pdf" target="_blank" class="section_main-link") Правила конкурса  
       section.section.start__section.section_main.start__section_num
         h2.section__subtitle.section__subtitle_b призовой фонд от Panini
@@ -28,7 +28,7 @@ script(type="text/x-template" id="start-template")
         v-show="utype")
         .section__inner
           h2.section__subtitle.section__subtitle_b Викторина «Знаешь ли ты звёзд мирового футбола?»
-          p.section__text Ответь правильно на вопросы викторины и приглашай друзей, чтобы заработать дополнительные баллы!
+          p.section__text Ответь правильно на вопросы викторины и поборись за звание самого активного болельщика!
           button.btn-main(@click.prevent="startGame") играть
       section.section.start__section.section_border.start__section_game-two(
         v-show="utype && gstatus")

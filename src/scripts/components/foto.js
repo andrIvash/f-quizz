@@ -1,11 +1,16 @@
 export default {
   template: '#foto-template',
 
-  props: ['isShown', 'gstatus', 'fstatus', 'furl'],
+  props: ['isShown', 'gstatus', 'fstatus', 'ulist'],
 
   data: () => ({
     active_foto: null
   }),
+  computed: {
+    getName: function (index) {
+      return 'file' + index
+    }
+  },
 
   mounted: function() {
     
@@ -60,10 +65,15 @@ export default {
     }
   },
   watch: {
-    furl: function(newVal) {
+    fstatus: function(newVal) {
       if (newVal) {
-        $(this.active_foto).css('display', 'block');
-        $(this.active_foto).css('background-image', `url(${newVal})`);
+        //$(this.active_foto).css('display', 'block');
+        //$(this.active_foto).css('background-image', `url(${newVal})`);
+      }
+    },
+    ulist: function(newVal) {
+      if (newVal) {
+        this.ulist = newVal;
       }
     }
   }
