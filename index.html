@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta content="" name="author">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles/vendor.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <script src="assets/scripts/vendor.js" defer></script>
+    <script src="assets/scripts/common.js" defer></script><!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17087845-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-17087845-1');
+    </script>
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=UA-17087845-1" height="0" width="0" style="display:none;visibility:hidden;"></iframe>
+    </noscript>
+    <div class="header">
+      <div class="container"><a class="header__link" href="https://dnevnik.ru/" target="_blank" title="Дневник"></a></div>
+    </div>
+    <div id="app-start" :class="{offline: gameShow || fotoShow || finalShow}">
+      <div class="wrapper" :class="{offline: gameShow || fotoShow || finalShow}">
+        <script type="text/x-template" id="start-template">
+          <main class="main start" v-show="isShown">
+            <div class="container">
+              <h1 class="title start__title">panini: собери свою коллекцию  звезд футбола!</h1>
+              <section class="section start__section section_main" v-show="utype">
+                <p class="section__text">Любишь футбол? Знаешь всех крутых футболистов? Проверь свои знания! Участвуй в викторине, ответь на вопросы о любимых игроках и стань обладателем 250 наклеек, коллекционного альбома или футболки  со своим именем!</p>
+                <button class="btn-main" @click.prevent="startGame">УЧАСТВОВАТЬ</button><a class="section_main-link" href="quizz-rules.pdf" target="_blank">Правила конкурса  </a>
+              </section>
+              <section class="section start__section section_main start__section_num">
+                <h2 class="section__subtitle section__subtitle_b">призовой фонд от Panini</h2>
+                <div class="section__content">
+                  <div class="section__elem">
+                    <div class="section__number">130</div>
+                    <div class="section__desc">
+                      <div class="section__descr-big">Призов</div>
+                      <div class="section__descr-small">альбом</div>
+                      <div class="section__descr-small">+ 250 наклеек</div>
+                    </div>
+                  </div>
+                  <div class="section__elem">
+                    <div class="section__number">15</div>
+                    <div class="section__desc">
+                      <div class="section__descr-big">Главных призов</div>
+                      <div class="section__descr-small">альбом</div>
+                      <div class="section__descr-small">+ 250 наклеек</div>
+                      <div class="section__descr-small">+ футболка с твоим именем</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="section start__section section_border start__section_game-one" v-show="utype">
+                <div class="section__inner">
+                  <h2 class="section__subtitle section__subtitle_b">Викторина «Знаешь ли ты звёзд мирового футбола?»</h2>
+                  <p class="section__text">Ответь правильно на вопросы викторины и поборись за звание самого активного болельщика!</p>
+                  <button class="btn-main" @click.prevent="startGame">играть</button>
+                </div>
+              </section>
+              <section class="section start__section section_border start__section_game-two" v-show="utype &amp;&amp; gstatus">
+                <div class="section__inner">
+                  <h2 class="section__subtitle section__subtitle_b">Конкурс «Самый активный болельщик»</h2>
+                  <p class="section__text">Как ты поддерживаешь любимую команду? Расскажи всем! Присылай фотографии в форме футбольного клуба, с мячом, шарфом, набором наклеек, со стадиона или со своей собственной тренировки и докажи, что ты самый активный болельщик! Авторы самых  ярких и интересных снимков смогут побороться за главный приз: именную футболку!</p>
+                  <button class="btn-main" @click.prevent="sendFoto">отправить фото</button>
+                </div>
+              </section>
+              <section class="section start__section section_border start__section_game-adv">
+                <div class="section__inner">
+                  <h2 class="section__subtitle section__subtitle_b">Наклейки Panini – это азарт поиска и радость обладания!</h2>
+                  <p class="section__text">Золотой мир футбола в альбоме Panini FIFA365-2018. Коллекция наклеек посвящена 25 лучшим футбольным клубам. Каждый клуб представлен наклейками с логотипом, командным фото и ключевыми игроками в официальной форме. Про каждого футболиста в коллекции собрана важная статистика: участие в чемпионатах, забитые голы, игровая позиция и ведущая нога, гражданство, год рождения и статус игрока. Всего в коллекции для вклеивания в альбом 602 наклейки.</p>
+                  <h2 class="section__info">Хочешь знать больше о мировом клубном футболе? Собирай наклейки Panini FIFA 365-2018, обменивайся с друзьями и создай  свою коллекцию звезд футбола!</h2>
+                </div>
+              </section>
+              <section class="section start__section section_buy"><a class="section__link-buy" href="/" @click.prevent="buyThis">Где купить? </a></section>
+            </div>
+          </main>
+        </script>
+        <script type="text/x-template" id="game-template" lang="pug">
+          <main class="main game" v-show="isShown">
+            <div class="container">
+              <h1 class="title game__title">Викторина <br>«Знаешь ли ты звёзд мирового футбола?»</h1>
+              <ul class="cards game__cards">
+                <li class="cards__item" v-for="card in quizz[active_quest].cards"><img class="cards__img" :src="card"></li>
+              </ul>
+            </div>
+            <div class="question">
+              <div class="container">
+                <h2 class="question__text" v-text="quizz[active_quest].question"></h2>
+                <ul class="answers question__answers">   
+                  <li class="answer" v-for="(answer, index) in quizz[active_quest].answers" :data-id="index" v-text="answer" @click="checkAnswer"></li>
+                </ul>
+              </div>
+              <div class="question__banner">   </div>
+            </div>
+          </main>
+        </script>
+        <script type="text/x-template" id="foto-template">
+          <main class="main game game_foto" v-show="isShown">
+            <div class="container">
+              <div class="main__header"><a class="main__header-link" href="/" @click.prevent="goBack">На главную</a>
+                <h1 class="title game__title">добавь свою фотографию</h1>
+              </div>
+              <ul class="fotos">
+                <li class="foto foto__item" v-for="item in ulist">
+                  <label class="foto__btn" v-bind:for="item.id">
+                    <input class="foto__input" @change="addFoto" :id="item.id" v-bind:name="item.id" type="file">
+                  </label>
+                  <div class="foto__text">Нажми, чтобы загрузить  фото</div>
+                  <div class="foto__self" v-show="item.foto_status" :style="{ 'background-image': 'url(' + item.foto_status + ')' }">
+                    <div class="foto__self-img"></div>
+                    <div class="foto__self-text"></div>
+                  </div>
+                </li>
+                <li class="foto foto__item foto__item_last">
+                  <label class="foto__btn" for="last">
+                    <input class="foto__input" @change="addFoto" id="last" name="last" type="file">
+                  </label>
+                  <div class="foto__text">Нажми, чтобы загрузить  фото</div>
+                  <div class="foto__self">
+                    <div class="foto__self-img"></div>
+                    <div class="foto__self-text">   </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="question">
+              <div class="container">
+                <div class="question__banner">  </div>
+              </div>
+            </div>
+          </main>
+        </script>
+        <script type="text/x-template" id="final-template">
+          <main class="main game game_final" v-show="isShown">
+            <div class="container">
+              <div class="main__header"><a class="main__header-link" href="/" @click.prevent="goBack">На главную</a>
+                <h1 class="title game__title">Викторина <br>«Знаешь ли ты звёзд мирового футбола?»</h1>
+              </div>
+              <h2 class="game__final-title">ты молодец!</h2>
+              <div class="game__result">
+                <div class="game__result-text">твой результат</div>
+                <div class="game__result-score" v-text="result || 0"></div>
+                <div class="game__result-score"></div>
+                <div class="game__result-text" v-text="decl"></div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="container">
+                <ul class="stickers">
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s1.png"><span class="stickers__text">Участие  в чемпионатах</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s2.png"><span class="stickers__text">Гражданство</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s3.png"><span class="stickers__text">Молодой игрок</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s4.png"><span class="stickers__text">Защитник</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s5.png"><span class="stickers__text">Голы на чемпионатах</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s6.png"><span class="stickers__text">Международный  игрок</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s7.png"><span class="stickers__text">Вратарь</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s8.png"><span class="stickers__text">Нападающий   </span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s9.png"><span class="stickers__text">Эмблема команды</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s10.png"><span class="stickers__text">Год рождения</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s11.png"><span class="stickers__text">Полузащитник</span></li>
+                  <li class="stickers__elem"><img class="stickers__img" src="assets/img/stickers/s12-1.png"><img class="stickers__img" src="assets/img/stickers/s12-2.png"><img class="stickers__img" src="assets/img/stickers/s12-3.png"><span class="stickers__text">Нога           </span></li>
+                </ul>
+                <div class="question__banner">       </div>
+              </div>
+            </div>
+          </main>
+        </script>
+        <start-component :is-shown="startShow" :utype="user_type" :gstatus="game_status" @game="startGame" @foto="getFoto"></start-component>
+        <game-component :is-shown="gameShow" @stop="endGame"></game-component>
+        <foto-component :is-shown="fotoShow" :gstatus="game_status" :ulist="user_list" :fstatus="foto_status" @back="goBack" @savefile="saveFoto"></foto-component>
+        <final-component :is-shown="finalShow" :result="game_result" @back="goBack"></final-component>
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__text">Акция «ВИКТОРИНА PANINI FIFA365-2018» проходит 18.10.2017-30.12.2017 на территории РФ и является мероприятием, стимулирующим продажу наклеек «003367 PANINI FIFA 365 -2018». Организатор акции ООО «ИЗДАТЕЛЬСТВО ПАНИНИ РУС» (ИНН 7715882610 / КПП 771401001, ОГРН 1117746716670; Адрес регистрации/ почтовый адрес: 127015, г. Москва, Вятская ул. 49 стр. 1. Призовой фонд формируется за счет средств Организатора. Акция проводится в соответствии с требованиями законодательства РФ и настоящими условиями. Подробные условия акции опубликованы по ссылке выше «Полные правила».</div>
+            <div class="footer__img">     </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div id="modal">
+      <div class="modal">
+        <div class="modal__title"></div>
+        <div class="modal__content">
+          <table class="table" border="0" cellspacing="0" cellpadding="2" style="border-top:solid 1px #000000; border-left:solid 1px #000000;">
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Город</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Название магазина/киоска</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Адрес магазина/киоска</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. К. Маркса 59</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Н. Ершова 78</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Р. Зорге 93</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Станция метро Площадь Тукая</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Н. Ершова 1А Корстон</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Станция метро Горки</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Белинского 4</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Станция метро Проспект Победы</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Чуйкова 69</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Парковая 6</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Короленко 81</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Фрунзе 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Мусина 68 б</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Лаврентьева 9</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Даурская 40</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Еники 2/53</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ДЕЙЛИ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Декабристов 127</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Казань</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Рихарда Зорге, 66 Тц "Олимп"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Горького у а/о "Сберкасса"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Донская, 90, у библиотеки</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Московская пересечение с Конституции</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Навагинская, у магазина "Книги"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Донская, 50</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Крымская, 32</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Труда, автобусная остановка «КСМ»</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Гагарина, у дома №54 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Донская, 96/2, за ТЦ "Юбилейный"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Пластунская, 2 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Донская, 5 /Гагарина, 72, а/о ТД "Бегемот"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Политехническая, в районе института</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Горького, пересечение с Северной</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Бытха, у остановки к-т "Аэлита"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Курортный проспект, у остановки «Светлана»</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Горького 54, у подземного перехода</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Горького 56 "Б" здание ОПП</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Новая заря, 7 со стороны набережной</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Победы, 67</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Победы, 131</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Батумское шоссе, 29А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Армавирская у 72</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Армавирская у ТЦ "Дарья"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ОДС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Демократическая, около ярмарки "Татулян"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сочи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Виноградный переулок, 2а ТЦ "Сочи"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Фрунзе 2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">наб. кан. Грибоедова 71</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Заневский пр. 20</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Разъезжая 16/18</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Некрасова 46</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Рубинштейна 10</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Гончарная 18</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"НЕВА-ПРЕСС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ленинский пр. 119</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№1 ул. 7-я Красноармейская 2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№4 ул. Бабушкина 10, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№ 5 пл. Ал. Невского 2, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№6 пл. Балтийского вокз.1, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№7 Комендантский пр. 12, соор.№1,лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№8 Комендантский пр. 12, соор.№1, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№10 ул. Елецкая 15а, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№15 пл. Сенная соор 1, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№16 Гражданский пр. 116, к.1, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№18 Невский пр. 30, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№22 Московский пр., соор. №2, лит Б</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№23 Московский пр., соор. №2, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№24 пл. Заневская соор.№1,лит.А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№25 ул. Б.Новаторов соор.№2, лит Б</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№27 Добролюбова пр., соор.№1, лит. А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№28 Заневский пр., 69, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№29 Невский пр., соор. №2, лит. Г</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№35 Гражданский пр., 116, к.1, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№36 Савушкина пр., 2 лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№37 Каменоостровский пр., 37, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№38 Стачек пр. 90, к. 2, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"ПЕРВАЯ ПОЛОСА"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">№40 ул. Дыбенко 26, лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект науки,12</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Средний проспект, 53/29</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Разъезжая, 12</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Б. Сампсониевский проспект, 66 Е</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Бабушкина, 7</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Байконурская, 14 лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ярослава Гашека, 6 лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лиговский проспект, 52</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Московский проспект, 208</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Нарвский проспект , 24/2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новочеркасский пр-т, 26/16</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Энгельса 115, корп.1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Ветеранов, 101</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Энгельса, 154 лит А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Тепловозная, 31</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Пер. Гривцова, 24</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Измайловский пр-т, 4</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Кирочная, 18</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Большая Зеленина, 16</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Санкт-Петербург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"КОМУС"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Московский проспект, 137 корп. Б</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Нахимовский пр-т, 48</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Большая Спасская, 27</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Маршала Рыбалко, 10 корп.1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Вешняковская, 39г</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Дубнинская, 55</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Краснопрудная, 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Краснопрудная, 7/9</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">1-я Квеситская, 18 стр. 1 павильон 7</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Менжинского, 32, павильон 32</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Земляной Вал, 29</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Комсомольская пл, 5 2-й этаж ярославского вокзала</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Комсомольская пл, 3 (выход к пригородным поездам)</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Комсомольская пл, 3 помещение А-13 (Ленинградский Вокзал)</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пл. Павелецкого вокзала, 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Солдатская, 6 А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Саянская ул, 9 а</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ул. Крылатская, 17 корп. 3 Бизнес-центр</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ивана Франко, 10/3</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"СПРИНТ"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пл. Савеловского вокзала, 2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новоясеневский проспект, д. 1, ТЦ "Спектр", 2 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Академика Анохина, д. 2, к. 1б, 2 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Савелкинский проезд, д. 8 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> ул. Домодедовская, д. 28, корп. 1, ТД "Белград", цокольный этаж</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Вешняковская, д. 18а, ТЦ "Мегаком", 3 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Алтуфьевское шоссе, д. 86, корп. 1, ТЦ "Ареал", 2 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Декабристов, д. 10/2 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Пронская, д. 2 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Осенний бульвар, д. 7, стр. 1, ТЦ "Матрица", 1 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Новокосинская, д. 47 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Таллинская, д. 18 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Пырьева, д. 16 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> ул. Бутырская, д. 86а, 1 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Поляны, д. 8, ТЦ "Вива", 2 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Андропова, д. 8, ТРЦ "Мегаполис" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> г. Троицк, ул. Городская, вл. 6, ТЦ "Троицк", 3 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Варшавское шоссе, д. 87Б, 3 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> ул. Сходненская, д. 56, 4 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мичуринский проспект, д. 7, корп. 1 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Бульвар Дмитрия Донского, д. 1, ТЦ "Северное сияние"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Ладожская, д. 8, цокольный этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> Варшавское шоссе, д. 160, 2 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Соколово-Мещерская, д. 16/114 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Правобережная, д. 1Б </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Воротынская, д. 6</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Красногорск, ул. Международная, д. 12, ТРК "Вегас" в Крокус-Сити, 3 этаж</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ленинский проспект, д. 62/1 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Московский, мкр. 1, д. 32А </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">проспект Вернадского, д. 6, ТЦ "Капитолий", 3 этаж ул .Миклухо-Маклая, д. 32А, ТЦ "Капитолий", 2 этаж</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ходынский бульвар, д.4., ТЦ "Авиапарк", 4-й этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Солнцевский проспект, д. 21, ТЦ "Столица", 3 этаж </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Зеленоград, Панфиловский проспект, д. 6А, ТЦ "Панфиловский", 3 этаж. </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Литовский бульвар д. 22, ТД "Ясенево"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мичуринский пр-т, Олимпийская деревня, д.3, корп.1 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Московский, ул. Хабарова, дом 2, ТРК «Новомосковский» </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Серпуховский Вал, д. 3 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Пресненская набережная, д. 2, ТРЦ "Афимолл сити" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">п. Коммунарка, ул. Александры Монаховой, двлд. 30,стр.2 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пос. Внуковское, ул. Летчика Ульянина, д. 5 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">проспект Вернадского, д. 39 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Ярцевская, д. 19, ТЦ "Кунцево Плаза"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мичуринский пр-т, д. 27, ТЦ "Тиара" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> Каширское шоссе, д. 14, ТРЦ "Гудзон" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. 7-ая Кожуховская, д. 9, ТРК "Мозаика" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул.Автозаводская, д.18, ТРЦ "Ривьера" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> 84-й км. МКАД, ТРК "Весна" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пр-д Багратионовский д. 5 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Севастопольский пр-т, д. 11-е, ТЦ "Капитолий" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Поречная, д. 10, ТРК "Мари" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">д. Сосенки, Ясеневая улица, д. 5, ЖК "Дубровка" </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мичуринский проспект, д. 34 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Маршала Бирюзова, д. 32 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Столетова, д. 17 </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новоясеневский проспект, вл. 7, ТЦ "Калита"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лабиринт</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Зеленоград, 23 мкр. "Зеленый бор", корп. 2309А, ТЦ "Столица"</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Балашиха</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Свердлова, 20</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Долгопрудный</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пр- Пацаева, 15 А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Клин</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Советская пл. 11/1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Королев</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пр-т Королева, 22</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мытищи</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. Волошиной 12/30</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ногинск</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ул. 3-го Интернационала, 77</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Павловский Посад</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Герцена, 14</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Пушкино</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СИЛЬВЕРХОФ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Пушкинское ш, 2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Боровая, 20</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Мастеркова, 3</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новочеремушкинская, 1/14</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Борисовские пруды, 26/2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Часовая, 16</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Енисейская, 19</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Пришвина, 22</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Лесная, 4</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Братиславская, 14</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Варшавское шоссе, 75 корп 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Космонавтов, 12</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Головинское шоссе, 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Люсиновская, 2 стр 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Покровка, 4</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Андропова, 26</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Верхняя Красносельская, 34</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Осенний бульвар, 16 корп 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Земляной вал 21/2 стр 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Краснодарская 44/13</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Люблинская, 165</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Митинская, 40</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ярцевская, 34</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сивашская, 4 корп 1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Зеленый пр-т, 66 корп.1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Маршала Бирюзова, 28</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Декабристов 2 корп.2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Дубнинская, 11/17</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Первомайская, 100</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">3-я Владимирская, 31/33</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Куусинена, 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Фомичевой 16 корп. 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ленинский пр-т, 99</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Мира, 61</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Рязанский проспект, 40/2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Бутырская, 7</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Снежная, 26</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Щербаковская, 20</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стромынка 5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Бульвар Яна Райниса, 14 корп.1</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новоспасский пер, 3 корп.2</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Профсоюзная 129 А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Малая Тулская, 29</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Тушинская, 17</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Проспект Вернадского, 9/10</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Балаклавския пр-т, 5 А стр.7</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Шаболовка, 38</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Большая Семеновская, 16</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Кировоградская, 14</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">пр-т Ленина 23/5</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Каширское шоссе, 3 А</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Зеленоград, корп. 1818</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">КОМУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Панфиловский пр-т, 6а</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Кутузовский пр-т 30</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Кутузовский пр-т 24</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Шарикоподшипниковская, 32</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Большая Академическая, 77</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ивана Франко, 37</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Челябинская, 7</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Тушинская, 16 ст. 1а</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Луганская, 9а</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Смольная, 35</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Чертановская, 36 ст 3</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Люберцы, Попова, 11</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Дубравная, 40/4</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Москва</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">У МЕТРО</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">г. Троицк Юбилейная, 3</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Барнаул</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Роспечать-Алтай</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(3852) 63-73-77</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Владивосток</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">СТРОКА</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(423) 244-83-66</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Волгоград</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Союзпечать</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(8442) 72-48-65</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Воронеж</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Сегодня-Пресс-Воронеж</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(473) 220-44-20б </td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Екатеринбург</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Апрель Логистик</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(343) 345-28-01</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Нижний Новгород</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Шанс Пресс</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(831) 417-87-42</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Новосибирск</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">"АРПИ" "Сибирь"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(383) 227-77-67</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Омск</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">ооо "Движение"</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(3812) 6-2-3-4-5-6</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Челябинск</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Азбука</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">(351) 268-99-09</td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">cardplace.ru</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Ozon.ru</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов АШАН</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов ГИПЕРГЛОБУС</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов ЛЕНТА</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов ОКЕЙ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов АЗБУКА ВКУСА</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+            <tr>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;">Стойки прессы сети гипермаркетов МАГНИТ</td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"> </td>
+              <td style="border-bottom:solid 1px #000000; border-right:solid 1px #000000;"></td>
+            </tr>
+          </table>
+        </div><a class="modal__close" href="#close" rel="modal:close">
+          <svg class="close__icon" viewBox="0 0 21.9 21.9" enable-background="new 0 0 21.9 21.9">
+            <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z">  </path>
+          </svg></a>
+      </div>
+    </div>
+    <div id="modal2">
+      <div class="modal">
+        <div class="modal__title"></div>
+        <div class="modal__content">  </div><a class="modal__close" href="#close" rel="modal:close">
+          <svg class="close__icon" viewBox="0 0 21.9 21.9" enable-background="new 0 0 21.9 21.9">
+            <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z">  </path>
+          </svg></a>
+      </div>
+    </div>
+    <div class="svgall">   
+      <!-- include ../images/sprite/sprite.svg-->
+    </div>
+    <script src="assets/scripts/app.bundle.js" defer></script>
+  </body>
+</html>
