@@ -12,7 +12,7 @@ export default {
   },
 
   mounted: function() {
-    console.log('start block !');
+    
   },
 
   methods: {
@@ -23,6 +23,12 @@ export default {
     sendFoto() {
       console.log('send foto');
       this.$emit('foto');
+    },
+    buyThis: function() {
+      const modal = $('#modal').modal({
+        fadeDuration: 250,
+        fadeDelay: 1.5
+      });
     }
   },
   watch: {

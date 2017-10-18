@@ -4,6 +4,7 @@
   background-color: #ffffff;
   margin-bottom: rem(25px);
   width: 100%;
+  position: relative;
 }
 
 .section__subtitle {
@@ -168,4 +169,19 @@
 
 .section__info-link {
   color: #6b6969;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.section_main-link {
+  color: #6b6969;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-family: $font-text;
+  &:hover {
+    text-decoration: none;
+  }
 }

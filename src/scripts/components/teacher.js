@@ -9,14 +9,12 @@ export default {
     index: null,
     phone: '',
     school_number: null,
-    alb_one: 50,
-    alb_two: 100,
-    alb_three: 150,
+    albums: 150,
     personal_data: false
   }),
 
   mounted: function() {
-    console.log('teacher block !');
+    
     const that = this;
     $('.tform__input').on('focus', () => {
       that.errors.clear();
@@ -34,9 +32,7 @@ export default {
             address: that.address,
             phone: that.phone,
             school_number: that.school_number,
-            alb_one: that.alb_one,
-            alb_two: that.alb_two,
-            alb_three: that.alb_three,
+            albums: that.albums,
             personal_data: that.personal_data
           });
           return;
@@ -47,6 +43,12 @@ export default {
     },
     showModal: function() {
       const modal = $('#modal2').modal({
+        fadeDuration: 250,
+        fadeDelay: 1.5
+      });
+    },
+    buyThis: function() {
+      const modal = $('#modal').modal({
         fadeDuration: 250,
         fadeDelay: 1.5
       });

@@ -2,18 +2,25 @@ doctype html
 html
     include common/_head
     body
+      script(async src="https://www.googletagmanager.com/gtag/js?id=UA-17087845-1")
+      script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-17087845-1');
+      noscript
+        iframe(src="https://www.googletagmanager.com/ns.html?id=UA-17087845-1" height="0" width="0" style="display:none;visibility:hidden")
       .header
         .container
-          a.header__link(href="/")
+          a.header__link(href="https://dnevnik.ru/" target="_blank" title="Дневник")
         
       block main
       
-      //#modal(v-show='!gameShow')
+      #modal
         .modal
           .modal__title
           .modal__content
-          .modal__btn.modal__btn_one
-          .modal__btn.modal__btn_two
+            include common/_table
           a.modal__close(href="#close" rel="modal:close")
             svg.close__icon(viewBox="0 0 21.9 21.9" enable-background="new 0 0 21.9 21.9")
               path(d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z")   

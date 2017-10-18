@@ -5,7 +5,8 @@ script(type="text/x-template" id="start-template")
       section.section.start__section.section_main(
         v-show="utype")
         p.section__text Любишь футбол? Знаешь всех крутых футболистов? Проверь свои знания! Участвуй в викторине, ответь на вопросы о любимых игроках и стань обладателем 250 наклеек, коллекционного альбома или футболки со своим именем!
-        button.btn-main(@click.prevent="startGame") УЧАСТВОВАТЬ
+        button.btn-main(@click.prevent="{console.log('start');startGame()}") УЧАСТВОВАТЬ
+        a(href="quizz-rules.pdf" target="_blank" class="section_main-link") Правила конкурса  
       section.section.start__section.section_main.start__section_num
         h2.section__subtitle.section__subtitle_b призовой фонд от Panini
         .section__content
@@ -41,4 +42,4 @@ script(type="text/x-template" id="start-template")
           p.section__text Золотой мир футбола в альбоме Panini FIFA365-2018. Коллекция наклеек посвящена 25 лучшим футбольным клубам. Каждый клуб представлен наклейками с логотипом, командным фото и ключевыми игроками в официальной форме. Про каждого футболиста в коллекции собрана важная статистика: участие в чемпионатах, забитые голы, игровая позиция и ведущая нога, гражданство, год рождения и статус игрока. Всего в коллекции для вклеивания в альбом 602 наклейки.
           h2.section__info Хочешь знать больше о мировом клубном футболе? Собирай наклейки Panini FIFA 365-2018, обменивайся с друзьями и создай  свою коллекцию звезд футбола!
       section.section.start__section.section_buy
-        a.section__link-buy(href="/" target="_blank") Где купить? 
+        a.section__link-buy(href="/" @click.prevent="buyThis") Где купить? 

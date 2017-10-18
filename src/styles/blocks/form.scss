@@ -41,7 +41,7 @@
   }
 
   .tform__input {
-    display: inline-block;
+    display: inline-flex;
     padding: 0 rem(5px);
     width: 15%;
     margin-left: rem(10px);
@@ -49,7 +49,8 @@
     border-radius: 4px;
     background-color: #ffffff;
     text-align: center;
-
+    justify-content: center;
+    align-items: center;
     font-family: $font-title;
     color: $color-subtitle;
     font-size: rem(21px);
@@ -57,11 +58,17 @@
     2px 3px 0 rgba(0, 0, 0, 0.21),
     -1px 1px 0 #fff,
     1px 1px 0 #fff;
+    cursor: pointer;
 
-    &active,
-    &:focus {
+    &:hover {
       background-color: #b1ce87;
     }
+  }
+  .tform__checkbox {
+    display: none;
+  }
+  .tform__checkbox:checked + .tform__input {
+    background-color: #b1ce87;
   }
 }
 

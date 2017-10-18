@@ -161,7 +161,7 @@ export default {
   }),
 
   mounted: function() {
-    console.log('game block !');
+    
   },
 
   methods: {

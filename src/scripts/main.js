@@ -49,7 +49,7 @@ const _vms = new Vue({
   },
 
   mounted: function() {
-    console.log('Running App version ! ' + CDN);
+    //console.log('Running App version ! ' + CDN);
     const that = this;
 
     API.init();
@@ -76,10 +76,10 @@ const _vms = new Vue({
           that.user_type = true;
         }
         that.user = res;
-        console.log(that.user); //EduStudent
+        //console.log(that.user); //EduStudent
       }).then(function() {
         API.getKeyFromDB({key: `football_activity-${that.user.personId}`}, function(res) {
-          console.log(res);
+          //console.log(res);
           if (res == null) { // new user !!!!!!!!
             // that.info = {
             //   id: that.user.personId,

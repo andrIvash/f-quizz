@@ -12,7 +12,6 @@ export default {
     }
   },
   mounted: function() {
-    console.log('final block !');
     
   },
 

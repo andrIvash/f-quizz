@@ -8,7 +8,7 @@ export default {
   }),
 
   mounted: function() {
-    console.log('foto block !');
+    
     
   },
 

@@ -83,7 +83,7 @@ gulp.task('copy.image', function() {
 });
 // ------------------------------------------ copy readme --------------------------------//
 gulp.task('copy.readme', function() {
-  return gulp.src(['./README.md', './action-rules.pdf'], {since: gulp.lastRun('copy.readme')})
+  return gulp.src(['./README.md', './action-rules.pdf', './quizz-rules.pdf'], {since: gulp.lastRun('copy.readme')})
     .pipe(gulp.dest('./build'));
 });
 // ------------------------------------------ copy fonts --------------------------------//
@@ -131,7 +131,8 @@ gulp.task('js.vendor', function() {
     './node_modules/jquery/dist/jquery.min.js',
     './node_modules/jquery-modal/jquery.modal.js',
     './node_modules/moment/moment.js',
-    './src/scripts/vue.js'
+    './src/scripts/vue.min.js'
+    //'./src/scripts/vue.js'
   ])
     .pipe(concatCss('vendor.js'))
     .pipe(uglify())

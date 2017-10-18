@@ -66,7 +66,7 @@ const _vmt = new Vue({
   },
 
   mounted: function() {
-    console.log('Running App version ! ' + CDN);
+    //console.log('Running App version ! ' + CDN);
     const that = this;
 
     API.init();
@@ -86,7 +86,7 @@ const _vmt = new Vue({
         that.loading = true; // инициализация спиннера
         const roles = API.getData().user.roles;
         that.user = res;
-        console.log(that.user);
+        //console.log(that.user);
         const isEdu = roles.find(role => {
           return role === 'EduStaff';
         });
@@ -116,9 +116,7 @@ const _vmt = new Vue({
           address: data.address,
           phone: data.phone,
           school_number: data.school_number,
-          alb_one: data.alb_one,
-          alb_two: data.alb_two,
-          alb_three: data.alb_three,
+          albums: data.albums,
           personal_data: data.personal_data
         },
         dataType: 'json'
